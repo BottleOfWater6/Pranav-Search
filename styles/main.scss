@@ -1,0 +1,164 @@
+$search-bar-width: 600px;
+$search-bar-height: 45px;
+
+$text-base-color: #424242;
+$text-dark: lighten($text-base-color, 5%);
+$text-primary: lighten($text-base-color, 10%);
+$text-light: lighten($text-base-color, 40%);
+
+$font-banner: 5em;
+$font-reg: 0.9em;
+$font-sm: 0.8em;
+
+$item-space: 12px;
+
+body {
+  height: 100%;
+}
+
+.container {
+  min-height: 100%;
+  position: relative;
+}
+
+.navbar {
+  margin: 15px 0;
+  padding: 0 10px;
+
+  display: flex;
+  justify-content: space-between;
+
+  .nav-item {
+    margin-left: $item-space;
+
+    .nav-link {
+      font-size: $font-sm;
+      color: $text-dark;
+    }
+
+    .nav-img {
+      &#apps-icon {
+        width: 22px;
+        height: 22px;
+      }
+
+      &#user-icon {
+        width: 30px;
+        height: 30px;
+        margin-right: $item-space;
+      }
+    }
+  }
+}
+
+.main-content {
+  width: $search-bar-width;
+  margin: 100px auto 0 auto;
+
+  .banner-text {
+    display: flex;
+    justify-content: center;
+
+    h1 {
+      display: inline;
+      font-size: $font-banner;
+      text-align: center;
+    }
+
+    $google-colors: #4285f4, #db4437, #f4b400, #4285f4, #0f9d58, #db4437;
+    $all-colors: length($google-colors);
+
+    @for $i from 1 through $all-colors {
+      h1:nth-child(#{$all-colors}n + #{$i}) {
+        color: nth($google-colors, $i);
+      }
+    }
+  }
+
+  .search-bar-container {
+    $search-bar-border-color: darken(#efefef, 5%);
+
+    height: $search-bar-height;
+
+    margin: 0 auto;
+    padding: 7px 20px;
+    border: 1px solid $search-bar-border-color;
+    border-radius: 20px;
+    box-shadow: 0px 5px 20px -10px rgba(0, 0, 0, 0.75);
+
+    display: flex;
+
+    .input-wrapper {
+      flex-grow: 1;
+      padding-right: 10px;
+
+      #search-bar {
+        outline: none;
+        border: none;
+        width: 100%;
+        height: 100%;
+
+        &::placeholder {
+          color: $text-light;
+        }
+      }
+    }
+
+    #search-bar-icon {
+      width: 15px;
+    }
+  }
+
+  .button-container {
+    margin: 30px auto 0 auto;
+
+    display: flex;
+    justify-content: center;
+
+    .search-button {
+      margin: 0 7px;
+      border-radius: 5px;
+      border: none;
+      padding: 7px 15px;
+      background-color: #efefef;
+
+      font-size: $font-reg;
+      color: $text-primary;
+    }
+  }
+
+  .diff-lang {
+    margin-top: 20px;
+    p {
+      font-size: $font-reg;
+      text-align: center;
+    }
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  background: #efefef;
+
+  .footer-section {
+    border-top: 1px solid darken(#efefef, 10%);
+    height: 40px;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+
+    .footer-text-container {
+      display: flex;
+      align-items: center;
+
+      .footer-text {
+        margin-left: $item-space;
+        color: $text-primary;
+        font-size: $font-sm;
+      }
+    }
+  }
+}
